@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmydgdu1yyba7"]
+
+[ext_resource type="PackedScene" uid="uid://cxlb7nc4nwajw" path="res://bubbleTurquesa.tscn" id="1_cdgwh"]
+[ext_resource type="Texture2D" uid="uid://jjdh3qs2dgan" path="res://icon.svg" id="2_j0kpg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1laa"]
+size = Vector2(1288, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfa24"]
+size = Vector2(20, 737)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_236h4"]
+size = Vector2(1283.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nofwn"]
+size = Vector2(23, 731)
+
+[node name="Main" type="Node2D"]
+
+[node name="bubble" parent="." instance=ExtResource("1_cdgwh")]
+position = Vector2(1012, 289)
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+position = Vector2(-2, -8)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D3Up" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(643, -46)
+shape = SubResource("RectangleShape2D_u1laa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(643, -44)
+scale = Vector2(10.0938, 0.765625)
+texture = ExtResource("2_j0kpg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-11, 359)
+shape = SubResource("RectangleShape2D_nfa24")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(641.25, 734)
+shape = SubResource("RectangleShape2D_236h4")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1290, 366.5)
+shape = SubResource("RectangleShape2D_nofwn")
