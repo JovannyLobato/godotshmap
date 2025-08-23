@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://ray_1.gd" id="1_ly4gr"]
 [ext_resource type="Texture2D" uid="uid://btmvt105y1me8" path="res://src/spritesheetRay2.png" id="2_tvxip"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6qn7"]
+size = Vector2(22.7515, 1025)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2vmr"]
 atlas = ExtResource("2_tvxip")
 region = Rect2(0, 0, 1282, 502)
@@ -88,20 +91,23 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_785rr"]
-size = Vector2(54.2856, 1279)
-
 [node name="Ray1" type="CharacterBody2D" groups=["damage_source"]]
 position = Vector2(-2, 3)
-scale = Vector2(1, 0.7)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_ly4gr")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(512, 0)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_v6qn7")
+debug_color = Color(0.791477, 0.190865, 0.92886, 0.42)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(417, 8.57143)
+position = Vector2(438, -2)
 scale = Vector2(1, 0.15)
 sprite_frames = SubResource("SpriteFrames_tuf7e")
 animation = &"ray"
@@ -110,11 +116,5 @@ frame = 1
 [node name="Sprite2D" type="Sprite2D" parent="."]
 hframes = 3
 vframes = 10
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(414, 8.57143)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_785rr")
-debug_color = Color(0.840016, 0.440135, 0.507932, 0.392157)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

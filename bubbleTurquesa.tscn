@@ -80,7 +80,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"boom",
-"speed": 6.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -102,22 +102,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking",
-"speed": 9.0
+"speed": 4.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gicg0"]
-radius = 67.57
+radius = 48.0937
 
-[node name="bubble" type="CharacterBody2D"]
+[node name="bubble" type="CharacterBody2D" groups=["damage_source"]]
 texture_filter = 1
+scale = Vector2(0.7, 0.7)
+collision_mask = 18
 script = ExtResource("1_d4kug")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_4mlab")
 animation = &"walking"
-frame = 1
-frame_progress = 0.47221
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gicg0")
@@ -128,4 +128,8 @@ debug_color = Color(0.651261, 0.327684, 1, 0.42)
 hframes = 4
 vframes = 3
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://dvyw7cpsppies"]
+
+[ext_resource type="Script" path="res://witch.gd" id="1_i133e"]
+[ext_resource type="Texture2D" uid="uid://bpsntnumd8vsw" path="res://src/brujitaSpritesheet.png" id="2_earjc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swoh8"]
+size = Vector2(117, 251)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn6cy"]
+atlas = ExtResource("2_earjc")
+region = Rect2(0, 382, 382, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp00s"]
+atlas = ExtResource("2_earjc")
+region = Rect2(382, 382, 382, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3w1x"]
+atlas = ExtResource("2_earjc")
+region = Rect2(764, 0, 382, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abj6g"]
+atlas = ExtResource("2_earjc")
+region = Rect2(764, 382, 382, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gswl5"]
+atlas = ExtResource("2_earjc")
+region = Rect2(0, 764, 382, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tuf7"]
+atlas = ExtResource("2_earjc")
+region = Rect2(382, 0, 382, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35wh1"]
+atlas = ExtResource("2_earjc")
+region = Rect2(0, 0, 382, 382)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i75ry"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn6cy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qp00s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3w1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abj6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gswl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tuf7")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_35wh1")
+}],
+"loop": true,
+"name": &"quiet",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0vpv"]
+size = Vector2(126.666, 255)
+
+[node name="Witch" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+collision_layer = 16
+collision_mask = 7
+script = ExtResource("1_i133e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, -9.5)
+shape = SubResource("RectangleShape2D_swoh8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 17
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i75ry")
+animation = &"quiet"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4.99992, -10.8333)
+shape = SubResource("RectangleShape2D_h0vpv")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

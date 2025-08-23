@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvyw7cpsppies"]
+
+[ext_resource type="Texture2D" uid="uid://jjdh3qs2dgan" path="res://icon.svg" id="1_13hkc"]
+[ext_resource type="Script" path="res://witch.gd" id="1_i133e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swoh8"]
+size = Vector2(124, 119.5)
+
+[node name="Witch" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 7
+script = ExtResource("1_i133e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.25)
+shape = SubResource("RectangleShape2D_swoh8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 17
+texture = ExtResource("1_13hkc")
