@@ -115,6 +115,8 @@ vframes = 10
 position = Vector2(414, 8.57143)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_785rr")
-debug_color = Color(0.840016, 0.440135, 0.507932, 0.392157)
+disabled = true
+debug_color = Color(0.839216, 0.439216, 0.509804, 0.713726)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

@@ -49,6 +49,7 @@ d_pressed={
 2d_physics/layer_1="enemi"
 2d_physics/layer_2="screenWall"
 2d_physics/layer_3="invensibleEnemi"
+2d_physics/layer_4="bullet"
 2d_physics/layer_5="player"
 
 [rendering]

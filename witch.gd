@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
 @onready var animation = $AnimatedSprite2D
+var bullet = preload("res://bullet.tscn")
+# this is lol
+var bubbler = preload("res://bubbler.tscn")
 var speed = 700
 var vitality = 3
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 var hittable = true
 
 func _physics_process(delta):
@@ -24,6 +28,18 @@ func _physics_process(delta):
 		if collider.is_in_group("damage_source") and hittable:
 			hit(collider)
 			
+	if Input.is_action_just_pressed("ui_right"):
+		
+		var bulletInstance = bullet.instantiate()
+		add_sibling(bulletInstance)
+		bulletInstance.position = Vector2(position.x+40, position.y-10)
+	
+		"""
+		you can delete that
+		var bb = bubbler.instantiate()
+		add_sibling(bb)
+		bb.position = position
+		"""
 func _process(delta):
 	pass
 
