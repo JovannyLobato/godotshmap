@@ -145,7 +145,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rke7l"]
 radius = 74.1687
 
-[node name="bubbler" type="CharacterBody2D"]
+[node name="bubbler" type="CharacterBody2D" groups=["destrayable"]]
 collision_mask = 0
 script = ExtResource("1_yvwfg")
 

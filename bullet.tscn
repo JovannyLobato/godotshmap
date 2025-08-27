@@ -1,21 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnfc6idwkr8as"]
+[gd_scene load_steps=8 format=3 uid="uid://cnfc6idwkr8as"]
 
 [ext_resource type="Script" path="res://bullet.gd" id="1_xq5rb"]
-[ext_resource type="Texture2D" uid="uid://bbfg6h8dtngyr" path="res://src/spritesheetBubbleTurquesa.png" id="2_r8tg5"]
+[ext_resource type="Texture2D" uid="uid://be5r0k7cvjc4" path="res://src/bulletSpritesheet.png" id="2_v40j0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7lv7"]
+atlas = ExtResource("2_v40j0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqwh6"]
+atlas = ExtResource("2_v40j0")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4afu"]
+atlas = ExtResource("2_v40j0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c20w0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7lv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqwh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4afu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iqoo8"]
-radius = 37.4065
+radius = 48.3333
 
 [node name="bullet" type="Area2D"]
 scale = Vector2(0.6, 0.6)
 collision_layer = 8
 script = ExtResource("1_xq5rb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_r8tg5")
-hframes = 4
-vframes = 3
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1.66667)
+scale = Vector2(3.27083, 3.27083)
+sprite_frames = SubResource("SpriteFrames_c20w0")
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9.53674e-07, 4.76837e-07)
 shape = SubResource("CircleShape2D_iqoo8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

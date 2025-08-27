@@ -10,7 +10,7 @@ var collision_name
 var collision_normal = Vector2.ZERO
 var last_direction = Vector2.ZERO
 var is_dead = false
-
+var life = 1
 func _ready():
 	animation.play("walking")
 	
@@ -54,6 +54,11 @@ func _on_animated_sprite_2d_frame_changed():
 func kill():
 	is_dead = true
 	animation.play("boom")
+
+func hit():
+	life-=1;
+	if(life<=0):
+		kill()
 	
 
 

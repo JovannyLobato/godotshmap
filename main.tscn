@@ -60,12 +60,15 @@ autostart = true
 position = Vector2(285, 321)
 
 [node name="bubbler" parent="." instance=ExtResource("5_lexl5")]
-position = Vector2(1197, 157)
+position = Vector2(1204, 299)
 
 [node name="bubbler2" parent="." instance=ExtResource("5_lexl5")]
-position = Vector2(1195, 579)
+position = Vector2(1191, 645)
 
 [node name="bubbler3" parent="." instance=ExtResource("5_lexl5")]
-position = Vector2(1194, 368)
+position = Vector2(1197, 467)
+
+[node name="bubbler4" parent="." instance=ExtResource("5_lexl5")]
+position = Vector2(1204, 123)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
