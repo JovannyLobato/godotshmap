@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_4be5o"]
 [ext_resource type="PackedScene" uid="uid://dvyw7cpsppies" path="res://witch.tscn" id="3_ekgho"]
-[ext_resource type="PackedScene" uid="uid://bi5ilg3goh6rq" path="res://ui.tscn" id="4_0wdlp"]
+[ext_resource type="PackedScene" uid="uid://b3ia2iwmfsx70" path="res://UI_state_machine.tscn" id="4_dgdoa"]
 [ext_resource type="PackedScene" uid="uid://dt6yqif8cck7" path="res://bubbler.tscn" id="5_lexl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfa24"]
@@ -20,24 +20,12 @@ size = Vector2(1297, 15)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4be5o")
 
-[node name="Ui" parent="." instance=ExtResource("4_0wdlp")]
-top_level = true
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 19.0
-offset_top = 14.0
-offset_right = 19.0
-offset_bottom = 14.0
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="screenWall" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="screenWall"]
-position = Vector2(11, 359)
+position = Vector2(-10, 368)
 shape = SubResource("RectangleShape2D_nfa24")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="screenWall"]
@@ -49,7 +37,7 @@ position = Vector2(1298, 367)
 shape = SubResource("RectangleShape2D_nofwn")
 
 [node name="CollisionShape2D3Up" type="CollisionShape2D" parent="screenWall"]
-position = Vector2(638.5, 26)
+position = Vector2(648, -8)
 shape = SubResource("RectangleShape2D_u1laa")
 
 [node name="Timer" type="Timer" parent="."]
@@ -63,12 +51,20 @@ position = Vector2(285, 321)
 position = Vector2(1204, 299)
 
 [node name="bubbler2" parent="." instance=ExtResource("5_lexl5")]
-position = Vector2(1191, 645)
+position = Vector2(1198, 629)
 
 [node name="bubbler3" parent="." instance=ExtResource("5_lexl5")]
-position = Vector2(1197, 467)
+position = Vector2(1187, 458)
 
 [node name="bubbler4" parent="." instance=ExtResource("5_lexl5")]
 position = Vector2(1204, 123)
 
+[node name="UI_state_machine" parent="." instance=ExtResource("4_dgdoa")]
+
+[node name="levelCleaned?" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="witch_dead" from="Witch" to="." method="_on_witch_witch_dead"]
+[connection signal="timeout" from="levelCleaned?" to="." method="_on_level_cleaned_timeout"]

@@ -21,8 +21,9 @@ func _on_animated_sprite_2d_frame_changed():
 	if animation.frame == 4 and animation.animation == "spiting":
 		for i in 3:
 			var bubbleInstantiate = bubble.instantiate()
-			add_sibling(bubbleInstantiate)
 			bubbleInstantiate.position = Vector2(position.x-50,position.y+60)
+			add_sibling(bubbleInstantiate)
+			
 		
 func hit():
 	life-=1;

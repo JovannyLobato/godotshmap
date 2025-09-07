@@ -44,8 +44,8 @@ func _on_animated_sprite_2d_frame_changed():
 			queue_free()
 			return
 		var rayInstance = myRay.instantiate()
-		add_sibling(rayInstance)
 		rayInstance.global_position = position
+		add_sibling(rayInstance)
 		if collision_normal != Vector2.ZERO:
 			rayInstance.rotation = last_direction.bounce(collision_normal).angle()
 

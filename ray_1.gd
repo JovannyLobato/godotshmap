@@ -18,3 +18,5 @@ func kill():
 func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.frame == 7:
 		$CollisionShape2D.disabled = false
+
+

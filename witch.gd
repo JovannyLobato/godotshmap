@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal witch_dead
+signal vitality_changed
+
 @onready var animation = $AnimatedSprite2D
 var bullet = preload("res://bullet.tscn")
 # this is lol
@@ -28,7 +31,7 @@ func _physics_process(delta):
 		if collider.is_in_group("damage_source") and hittable:
 			hit(collider)
 			
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_just_pressed("space_pressed"):
 		
 		var bulletInstance = bullet.instantiate()
 		add_sibling(bulletInstance)
@@ -64,3 +67,7 @@ func hit(collider):
 	animation.play("damage")
 	$Timer.start()
 	collider.kill()
+	emit_signal("vitality_changed")
+	if vitality <= 0 :
+		emit_signal("witch_dead")
+
