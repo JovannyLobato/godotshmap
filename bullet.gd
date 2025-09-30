@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position = Vector2(position.x+5, position.y)
+	position = Vector2(position.x+2000 * delta, position.y)
 
 
 func _on_body_entered(body):
