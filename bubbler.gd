@@ -3,7 +3,7 @@ extends CharacterBody2D
 var bubble = preload("res://bubbleTurquesa.tscn")
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-var life = 25
+var life = 1
 func _ready():
 	$AnimatedSprite2D.play("quiet")
 
@@ -15,7 +15,7 @@ func _on_timer_timeout():
 	
 func _on_animated_sprite_2d_animation_finished():
 	animation.play("quiet")
-	$Timer.wait_time = randf_range(0,2)
+	$Timer.wait_time = randf_range(4,15)
 
 func _on_animated_sprite_2d_frame_changed():
 	if animation.frame == 4 and animation.animation == "spiting":

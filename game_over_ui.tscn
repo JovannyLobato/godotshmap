@@ -15,4 +15,7 @@ script = ExtResource("1_0x1mn")
 layout_mode = 0
 offset_right = 412.0
 offset_bottom = 108.0
+theme_override_colors/font_color = Color(0.913725, 0.584314, 0.913725, 1)
+theme_override_colors/font_shadow_color = Color(0.913725, 0.584314, 0.913725, 1)
+theme_override_font_sizes/font_size = 35
 text = "game_over"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://be5bvy8vu7ehx"]
+
+[ext_resource type="Script" path="res://snow_particles_mmi.gd" id="1_xlw2s"]
+
+[node name="snow_particles_mmi" type="Node"]
+script = ExtResource("1_xlw2s")

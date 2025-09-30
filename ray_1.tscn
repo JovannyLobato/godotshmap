@@ -93,7 +93,7 @@ size = Vector2(54.2856, 1279)
 
 [node name="Ray1" type="CharacterBody2D" groups=["damage_source"]]
 position = Vector2(-2, 3)
-scale = Vector2(1, 0.7)
+scale = Vector2(4, 0.5)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_ly4gr")

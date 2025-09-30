@@ -8,7 +8,7 @@ var bullet = preload("res://bullet.tscn")
 # this is lol
 var bubbler = preload("res://bubbler.tscn")
 var speed = 700
-var vitality = 3
+var vitality = GameData.vitality
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -31,7 +31,7 @@ func _physics_process(delta):
 		if collider.is_in_group("damage_source") and hittable:
 			hit(collider)
 			
-	if Input.is_action_just_pressed("space_pressed"):
+	if Input.is_action_just_pressed("r1_pressed"):
 		
 		var bulletInstance = bullet.instantiate()
 		add_sibling(bulletInstance)
@@ -60,7 +60,8 @@ func _on_area_2d_body_entered(body):
 		hit(body)
 
 func hit(collider):
-	vitality-=1
+	GameData.vitality-=1
+	vitality=GameData.vitality
 	hittable = false
 	set_collision_mask_value(1, false)
 	set_collision_mask_value(3, false)
