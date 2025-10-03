@@ -220,7 +220,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"flying",
-"speed": 60.0
+"speed": 40.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -239,7 +239,7 @@ script = ExtResource("1_qwxkm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xf200")
-animation = &"flying"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -29)
